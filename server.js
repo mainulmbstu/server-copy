@@ -18,7 +18,9 @@ const corsOption = {
 const app = express();
 app.use(cors(corsOption));
 app.use(express.json());
-app.use('/public', express.static('public')) // for static path of public folder
+// app.use('/public', express.static('public')) // for static path of public folder
+// // app.use(express.urlencoded({ extended:false}));
+app.use('/client/public', express.static('public')) // for static path of public folder
 // app.use(express.urlencoded({ extended:false}));
 
 // app.get('/', (req, res) => {

@@ -248,9 +248,8 @@ const orderSearch = async (req, res) => {
 //=================================================
 
 const gallery = async (req, res) => {
-
   try {
-    const picturePath = req.files.map(file=>file.path)
+    const pictureName = req.files.map(file=>file.filename)
     // console.log(picturePath);
     // const { secure_url, public_id } = await uploadOnCloudinary(
     //   picturePath[1],
@@ -265,12 +264,12 @@ const gallery = async (req, res) => {
     let imageList = await GalleryModel.find({})
 
     if (imageList.length === 0) {
-      let images = await GalleryModel.create({picture:picturePath} );
+      let images = await GalleryModel.create({ picture: pictureName });
       return res
         .status(201)
         .send({ msg: "images uploaded successfully", success: true, images });
     }
-    totalImage = [...imageList[0]?.picture, ...picturePath]
+    totalImage = [...imageList[0]?.picture, ...pictureName];
     let images = await GalleryModel.findByIdAndUpdate(imageList[0]?._id, {picture:totalImage}, {new:true}  );
     res
       .status(201)

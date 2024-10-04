@@ -142,7 +142,8 @@ const Gallery = () => {
               return (
                 <div key={index} className="col-md-3 border text-center p-2">
                   <LazyLoadImage
-                    src={`${import.meta.env.VITE_BASE_URL}/${item}`}
+                    src={`images/${item}`}
+                    // src={`${import.meta.env.VITE_BASE_URL}/${item}`}
                     alt="image"
                     width={"100%"}
                     height={300}
